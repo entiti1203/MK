@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro PT</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Registro de PT</h1>
+
+  <label for="valor">Ingrese un número:</label>
+  <input type="number" id="valor" step="any" inputmode="decimal" placeholder="Ej: 12 o -5">
+  <button id="agregarBtn">Agregar</button>
+  <button id="guardarBtn">Guardar historial</button>
+
+  <h2>Valor actual de PT: <span id="ptValor">0</span></h2>
+
+  <h3>Historial:</h3>
+  <pre id="historial"></pre>
+
+  <script>
+    let PT = 0;
+    let historial = [];
+
+    const valorInput = document.getElementById("valor");
+    const ptValor = document.getElementById("ptValor");
+    const historialDisplay = document.getElementById("historial");
+
+    function agregarValor() {
+      const num = parseFloat(valorInput.value);
+      if (!isNaN(num)) {
+        PT += num;
+        const hora = new Date().toLocaleTimeString();
+        historial.push(`[${hora}] ${num >= 0 ? '+' : ''}${num} -> PT = ${PT}`);
+        actualizarPantalla();
+        valorInput.value = "";
+      }
+    }
+
+    document.getElementById("agregarBtn").addEventListener("click", agregarValor);
+
+    valorInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        agregarValor();
+      }
+    });
+
+    document.getElementById("guardarBtn").addEventListener("click", () => {
+      const contenido = historial.join("\n");
+      const ahora = new Date();
+      const fecha = ahora.toISOString().split("T")[0];
+      const hora = ahora.toTimeString().split(" ")[0].replace(/:/g, "-");
+      const nombreArchivo = `historial_PT_${fecha}_${hora}.txt`;
+
+      const blob = new Blob([contenido], { type: "text/plain" });
+      const enlace = document.createElement("a");
+      enlace.href = URL.createObjectURL(blob);
+      enlace.download = nombreArchivo;
+      enlace.click();
+    });
+
+    function actualizarPantalla() {
+      ptValor.textContent = PT;
+      historialDisplay.textContent = historial.join("\n");
+    }
+  </script>
+</body>
+</html>

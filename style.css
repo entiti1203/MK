@@ -1,0 +1,34 @@
+/* Estilo tipo consola */
+body {
+    background-color: #0d0d0d; /* fondo negro */
+    color: #00ff00;            /* texto verde */
+    font-family: 'Courier New', monospace;
+    padding: 20px;
+}
+
+input, button {
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+button {
+    background-color: #111;
+    color: #00ff00;
+    border: 1px solid #00ff00;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #222;
+}
+
+pre {
+    background-color: #111;
+    color: #00ff00;
+    padding: 10px;
+    border: 1px solid #00ff00;
+    max-height: 300px;
+    overflow-y: auto;
+}
