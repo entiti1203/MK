@@ -1,34 +1,77 @@
-/* Estilo tipo consola */
+/* === Estilo general moderno === */
 body {
-    background-color: #0d0d0d; /* fondo negro */
-    color: #00ff00;            /* texto verde */
-    font-family: 'Courier New', monospace;
-    padding: 20px;
+    font-family: "Segoe UI", Roboto, sans-serif;
+    background: linear-gradient(135deg, #f4f4f9, #e9eef5);
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
 }
 
-input, button {
-    font-family: 'Courier New', monospace;
+/* === Contenedor principal === */
+.container {
+    background: white;
+    margin-top: 40px;
+    padding: 20px 25px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 450px;
+}
+
+/* === Títulos === */
+h1, h2, h3 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* === Entradas y botones === */
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
     font-size: 16px;
-    margin: 5px 0;
+    box-sizing: border-box;
 }
 
 button {
-    background-color: #111;
-    color: #00ff00;
-    border: 1px solid #00ff00;
-    padding: 5px 10px;
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 8px;
+    background: #0078ff;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
+    transition: background 0.3s;
 }
 
 button:hover {
-    background-color: #222;
+    background: #005fd1;
 }
 
+/* === Historial === */
 pre {
-    background-color: #111;
-    color: #00ff00;
+    background: #f8f9fb;
     padding: 10px;
-    border: 1px solid #00ff00;
-    max-height: 300px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-family: monospace;
+    white-space: pre-wrap;
+    max-height: 250px;
     overflow-y: auto;
+}
+
+/* === Adaptación para móviles === */
+@media (max-width: 480px) {
+    h1 { font-size: 20px; }
+    button { font-size: 14px; padding: 10px; }
+    input[type="number"] { font-size: 14px; }
 }
